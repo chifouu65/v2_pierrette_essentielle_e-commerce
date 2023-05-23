@@ -9,7 +9,6 @@ export default function Nav() {
 
     const links = [
         {href: '/boutique', text: 'boutique'},
-        {href: '/about', text: 'about'},
     ]
 
     const [cartIsOpen, setCartIsOpen] = React.useState(false);

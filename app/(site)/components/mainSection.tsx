@@ -8,6 +8,7 @@ interface IMainSection {
 }
 
 import {Dancing_Script} from "next/font/google";
+import {IProduct} from "@/app/types/types";
 
 export const dancingScript = Dancing_Script({subsets: ['latin']})
 
@@ -58,7 +59,7 @@ export default function MainSection({ title, subTitle, text, data }: IMainSectio
     ]
 
     if ( data !== null ) return (
-        <div className="relative overflow-hidden bg-white min-h-[90vh] z-10 md:mt-12">
+        <div className="relative overflow-hidden bg-white min-h-[90vh] z-10 md:mt-24">
             <div className="pb-80 sm:pb-40 lg:pb-48">
                 <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
                     <div className="sm:max-w-lg">

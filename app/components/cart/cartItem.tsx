@@ -4,9 +4,9 @@ import { CartEnums } from "@/app/redux/features/constants";
 import { Action } from "@/app/redux/store";
 import React from "react";
 import { useDispatch } from "react-redux";
+import Link from "next/link";
 
-export default function CartItem({id, item} : {
-    id: string | number,
+export default function CartItem({item} : {
     item: {
         id: string | number,
         quantity: number | string
@@ -14,6 +14,26 @@ export default function CartItem({id, item} : {
 }) {
     const {data, error, loading } = useApi(`/products/${item.id}?populate=*`);
     const dispatch = useDispatch()
+
+    const id = data?.id
+    const increment = () => {
+        dispatch(
+            Action(CartEnums.ADD_ITEM_TO_CART,
+                {
+                    id,
+                    quantity: Number(item.quantity) + 1
+                })
+        )
+    }
+
+    const decrement = () => {
+        dispatch(
+            Action(CartEnums.UPDATE_ITEM_IN_CART, {
+                id,
+                quantity: Number(item.quantity) - 1
+            })
+        )
+    }
     const handleRemove = () => {
         dispatch(
             Action(CartEnums.REMOVE_ITEM_FROM_CART, id)
@@ -30,12 +50,12 @@ export default function CartItem({id, item} : {
                     alt={data?.attributes?.title}
                     className="h-full w-full object-cover object-center"
                 />
-            </div>          
+            </div>
             <div className="ml-4 flex flex-1 flex-col">
                 <div>
                     <div className="flex justify-between text-base font-medium text-gray-900">
                         <h3>
-                            <a href={''}>{data?.attributes?.title}</a>
+                            <Link href={''}>{data?.attributes?.title}</Link>
                         </h3>
                         <p className="ml-4">{
                             (data?.attributes?.price).toFixed(2)
@@ -48,6 +68,7 @@ export default function CartItem({id, item} : {
                     </p>
                     <div className="flex gap-4 justify-center items-center">
                         <button
+                            onClick={increment}
                             type="button"
                             className="font-medium text-indigo-600 hover:text-indigo-500"
                             >
@@ -55,6 +76,7 @@ export default function CartItem({id, item} : {
                         </button>
                         <span className="text-gray-500">|</span>
                         <button
+                            onClick={decrement}
                             type="button"
                             className="font-medium text-indigo-600 hover:text-indigo-500"
                             >

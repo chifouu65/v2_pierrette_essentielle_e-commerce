@@ -13,14 +13,18 @@ export function Action(type: CartEnums, payload: any) {
      }
 }
 
+interface total {
+    totalPrice: number;
+    totalQuantity: number;
+}
 const cartSlice = createSlice({
     name: "cart",
     initialState,
     reducers: {
-        // { type: "cart/addToCart", payload: IProduct } 
-        increment: (state, action) => {
+        // { type: "cart/addToCart", payload: IProduct }
+        create: (state, action) => {
             const item = action.payload;
-            
+
             // Permet de vérifier si le produit est déjà dans le panier
             const product = state.cart.find(x => x.id === item.id);
             // Si le produit est déjà dans le panier, on incrémente la quantité
@@ -32,14 +36,12 @@ const cartSlice = createSlice({
                 state.cart = [...state.cart, item];
             }
         },
-        // { type: "cart/removeFromCart", payload: number }
-        decrement: (state, action) => {
+        // { type: "cart/increment", payload: number }
+        remove: (state, action) => {
             const id = action.payload;
             const product = state.cart.find(x => x.id === id);
             if (product) {
                 state.cart = state.cart.filter(x => x.id !== id);
-            } else {
-                state.cart = [...state.cart];
             }
         },
         // { type: "cart/updateCart", payload: IProduct }
@@ -55,13 +57,13 @@ const cartSlice = createSlice({
         // { type: "cart/clearCart" }
         clear: (state, action) => {
             state.cart = [];
-        }
+        },
     }
 })
 
-export const { 
-    increment, 
-    decrement, 
+export const {
+    create,
+    remove,
     update, 
     clear 
 } = cartSlice.actions;

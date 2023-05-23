@@ -3,7 +3,7 @@ import Drawer from "@/app/components/drawer";
 import {AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart} from "react-icons/ai";
 import Link from "next/link";
 
-function Item({text, href}: ILink) {
+function Item({text, href}: {text: string, href: string}) {
     return (
         <li className='
             block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50
@@ -16,7 +16,7 @@ function Item({text, href}: ILink) {
 }
 
 export default function NavPhone({ links, cartIsOpen, setCartIsOpen }: {
-    links: ILink[],
+    links: {text: string, href: string}[],
     cartIsOpen: boolean,
     setCartIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
 }) {

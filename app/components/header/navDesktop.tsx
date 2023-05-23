@@ -2,7 +2,8 @@ import {AiOutlineShoppingCart} from "react-icons/ai";
 import React from "react";
 import Link from "next/link";
 
-function Item({text, href}: ILink) {
+function Item({text, href}:
+    {text: string, href: string}) {
     return (
         <li className='
             text-sm
@@ -19,7 +20,10 @@ function Item({text, href}: ILink) {
 }
 
 export default function NavDesktop({ links, cartIsOpen, setCartIsOpen }: {
-    links: ILink[],
+    links: {
+        href: string,
+        text: string,
+    }[],
     cartIsOpen: boolean,
     setCartIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
 }) {

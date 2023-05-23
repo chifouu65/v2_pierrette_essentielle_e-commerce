@@ -29,8 +29,8 @@ export default function ProductList({ maxPrice, selectedSubCategory } : {
                                                 className="h-full w-full object-cover object-center group-hover:opacity-75"
                                             />
                                         </div>
-                                        <h3 className="mt-4 text-sm text-gray-700">{product.attributes.title}</h3>
-                                        <p className="mt-1 text-lg font-medium text-gray-900">{(product.attributes.price).toFixed(2)}€</p>
+                                        <h3 className="mt-4 text-2xl text-gray-900">{product.attributes.title}</h3>
+                                        <p className="mt-1 font-medium text-gray-700">{(product.attributes.price).toFixed(2)}€</p>
                                     </Link>
                             ))
                         }

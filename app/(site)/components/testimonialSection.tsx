@@ -21,7 +21,7 @@ export default function TestimonialSection({person} : {person: { name: string; j
                     person.map((item, index) => (
                         <div className="mb-12 md:mb-0" key={index}>
                             <div className="mb-6 flex justify-center">
-                                <img src={item.image} className="w-32 rounded-full shadow-lg"/>
+                                <img alt={"profi"} src={item.image} className="w-32 rounded-full shadow-lg"/>
                             </div>
                             <h5 className="mb-4 text-xl font-semibold">{item.name}</h5>
                             <h6 className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600 mb-4">
