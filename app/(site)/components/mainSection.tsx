@@ -1,5 +1,4 @@
 import React from 'react'
-import Button from "@/app/components/buttons/button";
 
 interface IMainSection {
     title: string
@@ -7,6 +6,10 @@ interface IMainSection {
     text: string
     data: IProduct[]
 }
+
+import {Dancing_Script} from "next/font/google";
+
+export const dancingScript = Dancing_Script({subsets: ['latin']})
 
 export default function MainSection({ title, subTitle, text, data }: IMainSection) {
 
@@ -55,17 +58,19 @@ export default function MainSection({ title, subTitle, text, data }: IMainSectio
     ]
 
     if ( data !== null ) return (
-        <div className="relative overflow-hidden bg-white min-h-[90vh] z-10">
+        <div className="relative overflow-hidden bg-white min-h-[90vh] z-10 md:mt-12">
             <div className="pb-80 sm:pb-40 lg:pb-48">
                 <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
                     <div className="sm:max-w-lg">
-                        <h1 className="font text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                        <h1 className={
+                            dancingScript.className + " text-4xl font-bold tracking-tight text-gray-900"
+                        }>
                             {title}
                         </h1>
-                        <h2 className="font text-2xl font-bold tracking-tight text-green-500 sm:text-3xl">
+                        <h2 className="font text-2xl font-bold tracking-tight text-green-500">
                             {subTitle}
                         </h2>
-                        <p className="mt-4 text-xl text-gray-500">
+                        <p className="mt-4 text-lg md:text-xl text-gray-500">
                             {text}
                         </p>
                     </div>

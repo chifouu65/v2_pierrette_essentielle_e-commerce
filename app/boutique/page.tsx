@@ -2,6 +2,7 @@
 import ProductList from "@/app/boutique/components/ProductList";
 import useApi from "@/app/hooks/useApi";
 import React, {SetStateAction, useState} from "react";
+import { IProduct } from "../types/types";
 
 export default function Page() {
     const [ selectedSubCategory, setSelectedSubCategory] = React.useState([]);

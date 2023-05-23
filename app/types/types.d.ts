@@ -1,3 +1,6 @@
+import { ActionType } from 'typesafe-actions';
+import * as actions from './actions';
+
 type ILink = {
     href: string,
     text: string
@@ -8,9 +11,22 @@ type IImage = {
     alt: string
 }
 
+interface Product {
+    id: string,
+    price: number,
+    quantity: number,
+}
+
+export interface CartState {
+    cart: Product[],
+}
+
+export type CartActions = ActionType<typeof actions>;
+
 type IProduct = {
     id: number
-    attributes: {
+    quantity: number
+    attributes: any | {
         title: string
         categories: {
             data: {
@@ -26,7 +42,7 @@ type IProduct = {
                 id: number
                 attributes: {
                     title: string
-                }
+                } 
             }
         }
         desc: string

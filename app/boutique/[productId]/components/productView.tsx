@@ -1,5 +1,5 @@
-import useApi from "@/app/hooks/useApi";
 import {splitDescription} from "@/app/lib/format";
+import AddToCartButton from "@/app/components/buttons/addToCart";
 
 export default function ProductView({product}: any) {
 
@@ -23,6 +23,14 @@ export default function ProductView({product}: any) {
                         <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
                             {product.attributes.title}
                         </h1>
+                        <AddToCartButton
+                            data={
+                                {
+                                    product: product,
+                                    quantity: 1
+                                }
+                            }
+                        />
                         <h2 className="text-xl font-bold tracking-tight text-gray-900 sm:text-3xl">
                             {
                                 (product.attributes.price).toFixed(2)
